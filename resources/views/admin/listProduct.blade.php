@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Admin')
+@section('title', 'List Product - Admin')
 
 @section('content')
 <div class="container">
