@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Admin')
+@section('title', 'add Product')
 
 @section('content')
 <script>
@@ -60,15 +60,10 @@
                         <span class="input-group-text">.00</span>
                       </div>
                     </div>
-                    {{-- <input type="file" name="pic" class="form-group" /> --}}
                     <div class="form-group">
                       <label for="pro_info">Deskripsi</label>
                       <textarea type="text" id="pro_info" class="form-control"></textarea>
                     </div>
-                    {{-- <div class="form-group">
-                     <label>Upload image</label>
-                      <input type="file" name="pic" class="form-control">
-                    </div> --}}
                     <input type="submit" class="btn btn-success upload-image" value="Submit" id="btn" />
                 </div>
             </div>
