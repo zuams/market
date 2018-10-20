@@ -10,13 +10,14 @@
     var pro_name = $("#pro_name").val();
     var pro_code = $("#pro_code").val();
     var pro_price = $("#pro_price").val();
+    var pro_info = $("#pro_info").val();
     var token = $("#token").val();
     var id = $("#id").val();
 
     $.ajax({
       type: "post",
-      data: "id=" + id + "&pro_name=" + pro_name + "&pro_code=" + pro_code + "&pro_price=" + pro_price + "&_token=" + token,
-      url: "<?php echo url("/admin/saveProduct") ?>",
+      data: "id=" + id + "&pro_name=" + pro_name + "&pro_code=" + pro_code + "&pro_price=" + pro_price + "&pro_info=" + pro_info + "&_token=" + token,
+      url: "<?php echo url("/saveProduct") ?>",
       success:function(data){
         $("#msg").html("Product has been updated");
         $("#msg").fadeOut(2000);
@@ -37,7 +38,7 @@
                       <img src="{{ URL::to('/') }}/img/{{$data[0]->pro_img}}" alt="" width="100%" />
                   </div> 
                   <div class="card-footer" align="center">
-                  <a href="{{ url('admin/changeImage') }}/{{$data[0]->id}}" class="btn btn-fill btn-primary">Change image</a>
+                  <a href="{{ url('/changeImage') }}/{{$data[0]->id}}" class="btn btn-fill btn-primary">Change image</a>
                   </div>
                     </div>
                  </div>
@@ -52,16 +53,26 @@
                   <input type="hidden" value="{{$data[0]->id}}" id="id"/>
                   <br>
                   <input type="hidden" value="{{csrf_token()}}" id="token"/>
-                    <label>Product Name</label>
+                  <div class="form-group">
+                    <label for="pro_name">Product Name</label>
                     <input type="text" id="pro_name" value="{{$data[0]->pro_name}}" class="form-control" />
-                    <br>
-                    <label>Product Code</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="pro_code">Product Code</label>
                     <input type="text" id="pro_code" value="{{$data[0]->pro_code}}" class="form-control" />
-                    <br>
-                    <label>Product Price</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="pro_price">Product Price</label>
+                    <div class="input-group mb-3">
+                    <span class="input-group-text">Rp</span>
                     <input type="number" id="pro_price" value="{{$data[0]->pro_price}}" class="form-control" />
-                    <br>
-
+                    <span class="input-group-text">.00</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="pro_info">Deskripsi</label>
+                    <textarea type="text" id="pro_info" class="form-control">{{$data[0]->pro_info}}</textarea>
+                  </div>
                     <input type="submit" class="btn btn-success" value="Submit" id="btn" />
                 </div>
                 </div>

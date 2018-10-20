@@ -12,11 +12,10 @@
     var pro_price = $("#pro_price").val();
     var pro_info = $("#pro_info").val();
     var token = $("#token").val();
-
     $.ajax({
       type: "post",
-      data: "pro_name=" + pro_name + "&pro_code=" + pro_code + "&pro_price=" + pro_price + "&pro_info=" + pro_info + "&_token=" + token, //mendapatkan input form values
-      url: "<?php echo url("/admin/saveProduct") ?>", //action
+      data: "pro_name=" + pro_name + "&pro_code=" + pro_code + "&pro_price=" + pro_price +"&pro_info=" + pro_info + "&_token=" + token , //mendapatkan input form values
+      url: "<?php echo url("/saveProduct") ?>", //action
       success:function(data){
         $("#msg").html("<p class='alert alert-success'>Product has been inserted</p>");
         $("#msg").fadeOut(2000);
@@ -43,34 +42,34 @@
                   <h2>Add Product</h2>
                   <p id="msg" ></p>
                 </div>
-
                 <div class="card-body">
                     <input type="hidden" value="{{csrf_token()}}" id="token"/>
                     <div class="form-group">
-                      <label>Product Name</label>
+                      <label for="pro_name">Product Name</label>
                       <input type="text" id="pro_name" class="form-control" placeholder="Saya akan menjual Domain TLD"/>
                     </div>
                     <div class="form-group">
-                      <label>Product Code</label>
+                      <label for="pro_code">Product Code</label>
                       <input type="text" id="pro_code" class="form-control" placeholder="Domain" />
                     </div>
                     <div class="form-group">
-                      <label>Product Price</label>
+                      <label for="pro_price">Product Price</label>
                       <div class="input-group mb-3">
                         <span class="input-group-text">Rp</span>
                         <input type="number" id="pro_price" class="form-control" placeholder="99000" />
                         <span class="input-group-text">.00</span>
                       </div>
                     </div>
+                    {{-- <input type="file" name="pic" class="form-group" /> --}}
                     <div class="form-group">
-                      <label>Deskripsi</label>
+                      <label for="pro_info">Deskripsi</label>
                       <textarea type="text" id="pro_info" class="form-control"></textarea>
                     </div>
                     {{-- <div class="form-group">
                      <label>Upload image</label>
                       <input type="file" name="pic" class="form-control">
                     </div> --}}
-                    <input type="submit" class="btn btn-success" value="Submit" id="btn" />
+                    <input type="submit" class="btn btn-success upload-image" value="Submit" id="btn" />
                 </div>
             </div>
         </div>

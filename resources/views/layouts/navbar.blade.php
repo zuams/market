@@ -21,24 +21,24 @@
                     <a class="nav-link" href="#">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('admin/addProduct') }}">add Product</a>
+                    <a class="nav-link" href="{{ url('/addProduct') }}">add Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('admin/listProduct') }}">Daftar Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin') }}">Account</a>
+                    <a class="nav-link" href="{{ url('/listProduct') }}">Daftar Product</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/manage') }}">Admin</a>
+                    <a class="nav-link" href="{{ url('/manage') }}">Admin</a>
                 </li>
-                
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/products') }}">Product</a>
+                </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/home') }}">Account</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -15,7 +15,7 @@
                                 </div>
                             </div>
                             <div class="footer">
-                                    <a href="{{ url('/admin/changeImage') }}/{{$data[0]->id}}" class="btn btn-fill btn-primary">change image</a>
+                                    <a href="{{ url('/user/changeImage') }}/{{$data[0]->id}}" class="btn btn-fill btn-primary">change image</a>
                             </div>
                         </div>
                     </div>

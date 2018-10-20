@@ -17,37 +17,37 @@ Route::get('/', function () {
     	return view('layouts.main');
 	});
 
-Route::get('/home', 'HomeController@index')->name('admin.master');
+Route::get('/home', 'HomeController@index')->name('user.master');
 
 //products
-Route::view('/products', 'admin.myProducts', ['data' => App\Product::all()]);
+Route::view('/products', 'layouts.myProducts', ['data' => App\Product::all()]);
+Route::get('/post/{id}', 'UserController@showProduct');
 
+//user middleware start
+Route::group(['prefix' => '', 'middleware' => ['auth']], function () {
+    Route::get('/home','UserController@index');
+    Route::get('profile','UserController@profile');
+    Route::get('addProduct','UserController@addProduct');
+    Route::post('saveProduct','UserController@saveProduct');
 
-//admin middleware start
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
-    Route::get('/','AdminController@index');
-    Route::get('profile','AdminController@profile');
-    Route::get('addProduct','AdminController@addProduct');
-    Route::post('saveProduct','AdminController@saveProduct');
-
-    Route::view('addProduct', 'admin.addProduct',[
+    Route::view('addProduct', 'user.addProduct',[
     	'data' => App\Product::all()
     ]);
-    Route::get('listProduct','AdminController@listProduct');
+    Route::get('listProduct','UserController@listProduct');
     Route::get('editProduct/{id}',function($id){
-       return view('admin.editProduct',[
+       return view('user.editProduct',[
             'data' => App\Product::where('id', $id)->get()
        ]); 
     });
     
-    Route::post('editProduct', 'AdminController@uploadImage');
-    Route::resource('products', 'AdminController')->only([
+    Route::post('editProduct', 'UserController@uploadImage');
+    Route::resource('products', 'UserController')->only([
         'destroy', 'store'
     ]);
     //ubah gambar
-    Route::view('changeImage/{id}', 'admin.changeImage');
+    Route::view('changeImage/{id}', 'user.changeImage');
     
-    Route::view('manage', 'admin.manage', [
+    Route::view('manage', 'user.manage', [
         'data' => App\User::all()
     ]);
 });

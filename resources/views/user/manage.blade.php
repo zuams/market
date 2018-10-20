@@ -24,6 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="content">
+                            <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -44,6 +45,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>

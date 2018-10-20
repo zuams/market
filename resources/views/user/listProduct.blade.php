@@ -7,10 +7,11 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-body">
+          <div class="table-responsive">
           <table class="table table-hover table-striped" >
               <thead>
               <tr>
-              <th><b>Jumlah gigs: {{App\product::count()}}</b><th>
+              <th><b>Jumlah gigs: {{App\product::where('id_user',$id_user)->count()}}</b></th>
               {{-- <td><a href="{{ url('admin/addProduct') }}" class="btn btn-info">Add new</a><td>  --}}
               </tr>
               <tr align="center">
@@ -28,11 +29,12 @@
                   <td>{{$products->pro_code}}</td>
                   <td>{{$products->pro_price}}</td>
                   <td>{{$products->pro_img}}</td>
-                  <td><a class="btn btn-fill btn-primary" href="{{url('/admin/editProduct')}}/{{$products->id}}">Edit</a> <a class="btn btn-fill btn-danger" data-toggle="modal" data-catid="{{$products->id}}" href="#{{$products->id}}-hapus">Hapus</a></td>
+                  <td><a class="btn btn-fill btn-primary" href="{{url('/editProduct')}}/{{$products->id}}">Edit</a> <a class="btn btn-fill btn-danger" data-toggle="modal" data-catid="{{$products->id}}" href="#{{$products->id}}-hapus">Hapus</a></td>
                 </tr>
               @endforeach
             </tbody>
           </table>
+          </div>
         {{$data->links()}}
         </div>
       </div>
